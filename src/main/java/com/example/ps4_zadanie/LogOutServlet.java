@@ -7,27 +7,23 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "LogInServlet", value = "/LogInServlet")
-public class LogInServlet extends HttpServlet {
+@WebServlet(name = "LogOutServlet", value = "/LogOutServlet")
+public class LogOutServlet extends HttpServlet {
 
     public void init() {
-        System.out.println("LogIn init(): ");
+        System.out.println("LogOut init(): ");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.setAttribute("isLogged", true);
-        session.setAttribute("login", request.getParameter("login"));
-        session.setAttribute("password", request.getParameter("password"));
-        session.setAttribute("rememberMe", request.getParameter("rememberMe"));
+        session.invalidate();
 
-        System.out.println("LogIn doGet(): rememberMe:" + request.getParameter("rememberMe"));
-        System.out.println("LogIn doGet(): Session:" + session);
+        System.out.println("LogOut doGet(): ");
 
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1> LogIn </h1>");
+        out.println("<h1> LogOut </h1>");
         out.println("</body></html>");
     }
 
@@ -37,6 +33,6 @@ public class LogInServlet extends HttpServlet {
     }
 
     public void destroy() {
-        System.out.println("LogIn destroy(): ");
+        System.out.println("LogOut destroy(): ");
     }
 }
