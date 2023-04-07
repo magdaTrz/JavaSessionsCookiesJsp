@@ -35,9 +35,10 @@
 <form action="LogInServlet" method="get">
     <input type="text" name="login">
     <input type="password" name="password">
-    <input type="submit" name="Login">
     <label for="rememberMe">Remember me</label>
     <input type="checkbox" id="rememberMe" name="rememberMe">
+    <input type="submit" name="Login">
+
 </form>
 <%
     }

@@ -24,7 +24,11 @@ public class LogOutServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1> LogOut </h1>");
+        out.println("<a href=http://localhost:8080/PS4_zadanie_war_exploded/ > Return to main page </a>");
         out.println("</body></html>");
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     @Override
